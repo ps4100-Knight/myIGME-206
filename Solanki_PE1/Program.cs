@@ -20,7 +20,7 @@ namespace Solanki_PE1
         // Restraints : Division by zero not handled among other input errors that might occure 
         // Optimizations :  Could be much more efficiant with switch case or some other means rather than the else if
         //               :  Could use a seperate function that assignes value to a flag variable that can be checked at every step to ensure
-        //                  everything is going right and prompt user back to start from the point an invalid input is ther rather than checking
+        //                  everything is going right and prompt user back to start from the point an invalid input is there rather than checking
         //                  everything in "else"           
         TryAgain:
             int a = 0;
@@ -72,6 +72,6 @@ namespace Solanki_PE1
         }
     }
 }
-// PS :- I have pretty good handle on coding, its all matter of sytax to me, I am pretty good at developing solutions to problems
+// PS :- I have pretty good handle on coding, its all matter of syntax to me, I am pretty good at developing solutions to problems
 //       also I am good with C and C++ which are kinda like C#. I have tried to keep it simple and didn't go much into the optimized methods to
 //       do the same thing, but I surly will put more efforts in making other codes I write more optimized once I get a better handle on C#
