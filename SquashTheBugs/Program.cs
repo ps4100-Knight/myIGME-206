@@ -48,7 +48,7 @@ namespace SquashTheBugs
             }
 
             // output all numbers which have been processed
-           //Console.WriteLine("These numbers have been processed: " allNumbers); missing plus to add the allNumbers value in printing
+           //Console.WriteLine("These numbers have been processed: " allNumbers); missing plus to add the allNumbers value in printing (Syntax error)
             Console.WriteLine("These numbers have been processed: " + allNumbers);
         }
     }
