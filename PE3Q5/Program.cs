@@ -10,7 +10,6 @@ namespace Q5___PE3
     {
         static void Main(string[] args)
         {
-            // To print the instuctions
             Console.WriteLine("Enter the first number : ");  
             // To get a string value from user and covert it into an integer and store it in a float
             // there could be use of a method called "Tryparse" to check if the entered string is a number or not
@@ -24,6 +23,7 @@ namespace Q5___PE3
             float num4 = Convert.ToInt32(Console.ReadLine());//getting value
             //calculating the answer
             float ans = num1 * num2 * num3 * num4;
+            Console.Out.WriteLine("50 plus 25 is " + 50 + 25);
             Console.WriteLine("The product of all 4 numbers is : " + ans);//printing the answer
         }
     }
