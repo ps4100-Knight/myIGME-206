@@ -25,7 +25,9 @@ namespace Mandelbrot
         [STAThread]
         static void Main(string[] args)
         {
-            string sStartimagCoord = "null";
+            //Bunch of variables to read and store values from user the names are self explanatory
+            //Didn't want to mess around with the main logic so simply relaced the values that were in-coded with the values user gives
+            string sStartimagCoord = "null";   
             string sStartrealCoord = "null";
             string sEndimagCoord = "null";
             string sEndrealCoord = "null";
@@ -33,6 +35,8 @@ namespace Mandelbrot
             double dStartrealCoord = 0;
             double dEndimagCoord = 0;
             double dEndrealCoord = 0;
+            //simple logic of dividing the difference with 48 and 80 to make the amount of lines and characters per line 
+            //by determining the increment/decrement factor for the for loop
             double dDiffimag = 0;
             double dDiffreal = 0;
 
@@ -81,9 +85,9 @@ namespace Mandelbrot
                 }
 
             }
-            dDiffimag = (dStartimagCoord - dEndimagCoord) / 48;
+            dDiffimag = (dStartimagCoord - dEndimagCoord) / 48; //the decrement for imagcoord
             // Console.WriteLine(dDiffimag); just to check if the mechanism is working
-            dDiffreal = (dEndrealCoord - dStartrealCoord) / 80;
+            dDiffreal = (dEndrealCoord - dStartrealCoord) / 80; //the increment for realcoord
             for (imagCoord = dStartimagCoord; imagCoord >= dEndimagCoord; imagCoord -= dDiffimag)
             {
                 for (realCoord = dStartrealCoord; realCoord <= dEndrealCoord; realCoord += dDiffreal)
