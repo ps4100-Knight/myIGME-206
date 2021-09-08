@@ -16,7 +16,7 @@ namespace PE6
         {
            
             Random rand = new Random();
-            int num = 0; //to store the randome number
+            int num = 0; //to store the randome number.
             int flag = 0;
             int guessedNum = 0;
             // generate a random number between 0 inclusive and 101 exclusive
