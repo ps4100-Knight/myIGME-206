@@ -14,7 +14,7 @@ namespace PE6
             // Purpose:- Number guessing game.
             Random rand = new Random();
             int num = 0; //to store the randome number
-            int flag = 0;
+            int flag = 0;//to keep track of number of guesses
             int guessedNum = 0;
             // generate a random number between 0 inclusive and 101 exclusive
             int randomNumber = rand.Next(0, 101);
