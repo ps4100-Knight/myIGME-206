@@ -33,6 +33,7 @@ namespace PE6
                     guessedNum = Convert.ToInt32(Console.ReadLine());
                     if (guessedNum >= 0 && guessedNum <= 100)
                     {
+                        Console.WrtieLine("Invalid Guess\n");
                         break;
                     }
                 }
