@@ -6,20 +6,25 @@ using System.Threading.Tasks;
 
 namespace PE6
 {
+    // Author:- Pruthviraj Solanki (Knight)
+    // Purpose:- Contains a method for number guessing game.
     class Program
     {
+        // Author:- Pruthviraj Solanki (Knight)
+        // Purpose:- Number guessing game.
         static void Main(string[] args)
         {
-            // Author:- Pruthviraj Solanki (Knight)
-            // Purpose:- Number guessing game.
+           
             Random rand = new Random();
             int num = 0; //to store the randome number
             int flag = 0;
             int guessedNum = 0;
             // generate a random number between 0 inclusive and 101 exclusive
             int randomNumber = rand.Next(0, 101);
-            num = randomNumber;
-       //     Console.WriteLine("Number to be guessed:-" + num); //To print the number thats been generated useful only for testing
+            num = randomNumber; //Console.WriteLine("Number to be guessed:-" + num); //To print the number thats been generated useful only for testing
+            //Messages for user.
+            Console.WriteLine("Welcome to the number guessing game.\n A random number between 0 and 100 was generated at the start of this program\n");
+            Console.WriteLine("You have 8 chances to guess that number.\n Each time you guess wrong a hint will be given about if your guess is higher or lower than the generated number\n");
             while (flag <= 8)//loop for 8 guessing attempts
             {
                 if(flag == 8)
@@ -29,11 +34,18 @@ namespace PE6
                 }
                 while (true) //for valid input only
                 {
-                    Console.WriteLine("Guess the number which is between 0 to 100\n");
-                    guessedNum = Convert.ToInt32(Console.ReadLine());
-                    if (guessedNum >= 0 && guessedNum <= 100)
+                    try
                     {
-                        break;
+                        Console.WriteLine("Guess the number which is between 0 to 100\n");
+                        guessedNum = Convert.ToInt32(Console.ReadLine());
+                        if (guessedNum >= 0 && guessedNum <= 100)
+                        {
+                            break;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invalid input, try again\n");
                     }
                 }
                 if(guessedNum == num) //guessed number is correct 
