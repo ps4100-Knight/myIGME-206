@@ -7,10 +7,12 @@ using System.IO;
 
 namespace PE7__MathLib
 {
-
+    // Author :- Pruthviraj Solanki (Knight)
+    // Purpose :- A game of Madlibs
     class Program
     {
-
+        // Author :- Pruthviraj Solanki (Knight)
+        // Purpose :- A method that lets the user play a game of Madlibs
         static void Main(string[] args)
         {
             int libNum = 0; //to store number of stories available
