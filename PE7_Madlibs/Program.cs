@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PR7_Madlibs
+namespace PE7_Madlibs
 {
     class Program
     {

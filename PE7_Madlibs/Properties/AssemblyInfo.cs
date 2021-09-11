@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PR7_Madlibs")]
+[assembly: AssemblyTitle("PE7_Madlibs")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PR7_Madlibs")]
+[assembly: AssemblyProduct("PE7_Madlibs")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b459709d-7f90-4733-8d45-50a8c5167e0d")]
+[assembly: Guid("ba29f66b-f609-41fd-96a0-7c8a7f35045a")]
 
 // Version information for an assembly consists of the following four values:
 //

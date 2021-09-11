@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B459709D-7F90-4733-8D45-50A8C5167E0D}</ProjectGuid>
+    <ProjectGuid>{BA29F66B-F609-41FD-96A0-7C8A7F35045A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PR7_Madlibs</RootNamespace>
-    <AssemblyName>PR7_Madlibs</AssemblyName>
+    <RootNamespace>PE7_Madlibs</RootNamespace>
+    <AssemblyName>PE7_Madlibs</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
