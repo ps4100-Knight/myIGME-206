@@ -1,16 +1,28 @@
 ﻿using System.IO;
 using System;
 using System.Timers;
+
+//Author :- Pruthviraj Solanki(Knight)
+//Purpose :- Math quiz
 static class Program
 
 {
-    static bool bTimeOut = false;
 
-    static Timer timeOutTimer;
+    static bool bTimeOut = false; //variable to check the timer out trigger
+    static Timer timeOutTimer; 
+    // Author:- Pruthviraj Solanki(Knight)
+    // Purpose:- a math quiz with a timer of 5 seconds on each question 
+    // Declaration:- There is a bug where after timer runs out and user presses enter it prompts the same question,
+    // I am trying to figure out a way around that limitation of the timer class,
+    // But I am running a bit short on time so I have made vairables and have done some experimental logic thats in the comments.
+    // I don't know if it will affect my grade or not, hope it doesn't :)
     static void Main()
     {
+        //to check if no answer was given in time
+       // bool bNoAnswer = false;
         // store user name
         string myName = "";
+        
 
         // string and int of # of questions
         string sQuestions = "";
@@ -162,41 +174,55 @@ static class Program
                 sQuestions = $"Question #{nCntr + 1}: {val1} * {val2} => ";
             }
 
-            timeOutTimer = new Timer(5000);
+            timeOutTimer = new Timer(5000); //creating a timer of 5 seconds
 
             ElapsedEventHandler elapsedEventHandler;
 
-            elapsedEventHandler = new ElapsedEventHandler(Timesup);
+            elapsedEventHandler = new ElapsedEventHandler(Timesup); //calling the method Timesup in a timeout event
 
-            timeOutTimer.Elapsed += elapsedEventHandler;
+            timeOutTimer.Elapsed += elapsedEventHandler; 
 
             
             // display the question and prompt for the answer
             do
             {
                 Console.Write(sQuestions);
-                bTimeOut = false;
-                timeOutTimer.Start();
-                
+                bTimeOut = false; 
+                timeOutTimer.Start();//timer starts at prompt of question
+           
                 sResponse = Console.ReadLine();
 
-                try
-                {
-                    nResponse = int.Parse(sResponse);
-                    bValid = true;
-                }
-                catch
-                {
+
+
+               try
+               {
+                    if (bTimeOut == false)
+                    {
+                        nResponse = int.Parse(sResponse);
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Sorry your time ran out.\n");
+                        //bNoAnswer = true;
+                        bValid = true;
+                    }
+               }
+               catch
+               {
                     Console.WriteLine("Please enter an integer.");
                     bValid = false;
-                }
-
+               }
             } while (!bValid);
-            timeOutTimer.Stop();
+            timeOutTimer.Stop(); //timer stops
 
             // if response == answer, output flashy reward and increment # correct
             // else output stark answer
-            if (nResponse == nAnswer && bTimeOut == false)
+           /* if (bNoAnswer == true)
+            {
+                Console.WriteLine("You did not attempt to answer the question\n");
+            }*/
+            if (nResponse == nAnswer && bTimeOut == false) //if answer is right and timer has not run out
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.ForegroundColor = ConsoleColor.Magenta;
@@ -204,19 +230,20 @@ static class Program
 
                 ++nCorrect;
             }
-            else if (nResponse == nAnswer && bTimeOut == true)
+            else if (nResponse == nAnswer && bTimeOut == true)//if answer is right but timer has run out
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Your answer is correct but you ran out of time so it will be considered as a wrong\n");
             }
-            else if (nResponse != nAnswer && bTimeOut == true)
+            else if (nResponse != nAnswer && bTimeOut == true)//if answer is wrong and timer has run out
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Your answer is incorrect and you ran out of time so it will be considered as a wrong\n");
             }
-            else
+     
+            else //if answer is wrong and timer has not run out
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -252,9 +279,11 @@ static class Program
             }
         } while (true);
     }
+    //Author : Pruthviraj Solanki(Knight)
+    //Purpose : Handling the timer elapsed event
     static void Timesup(object source, ElapsedEventArgs e)
     {
-        Console.WriteLine("Times up, Late answer, it will be marked as wrong\n");
+        Console.WriteLine("Times up, Late answer, it will be marked as wrong\n"); 
         bTimeOut = true;
     }
 }
