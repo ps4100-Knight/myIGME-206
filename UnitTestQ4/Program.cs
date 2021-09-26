@@ -16,7 +16,8 @@ namespace UnitTestQ4
         //Author:- Pruthviraj Solanki (Knight)
         //Purpose:- A method that recreates the given 3questions.exe file
         public static void Main(string[] args)
-        {  
+        {
+            bool playAgain = false;
             string[] sQuestions = new string[3];
             sQuestions[0] = "What is your favorite color?";
             sQuestions[1] = "What is the answer to life, the universe and everything?";
@@ -27,7 +28,7 @@ namespace UnitTestQ4
             sAnswer[2] = "What do you mean? African or European swallow?";
             timer = new Timer(5000.0);
             timer.Elapsed += new ElapsedEventHandler(TimesUp);
-            string sRePlay = null; 
+      
             do
             {
                 Console.WriteLine();
@@ -41,7 +42,7 @@ namespace UnitTestQ4
                     }
                     catch
                     {
-                        Console.WriteLine("Enter an interger between 1 and 3\n");
+                        continue;
                     }
                 }
                 while ( nQ < 1 || nQ > 3);
@@ -62,22 +63,32 @@ namespace UnitTestQ4
                         Console.WriteLine("Wrong!  The answer is: " + sAnswer[nQ - 1]);
                     }
                 }
-                while(true)
-                {
-
-                    if (sRePlay.Length < 1 || !sRePlay.ToLower().StartsWith("n") && !sRePlay.ToLower().StartsWith("y"))
+               
+                while (true)
+                { 
+                    Console.Write("Play again? ");
+                    string sRePlay = Console.ReadLine();
+                    if (!sRePlay.ToLower().StartsWith("n") && !sRePlay.ToLower().StartsWith("y"))
                     {
-                        Console.Write("Play again? ");
-                        sRePlay = Console.ReadLine();
+                        continue;
                     }
                     else
                     {
-                        break;
+                        if(sRePlay.ToLower().StartsWith("n"))
+                        {
+                            playAgain = false;
+                            break;
+                        }
+                        else
+                        {
+                            playAgain = true;
+                            break;
+                        }
                     }
                 }
                 
             }
-            while (sRePlay.ToLower().StartsWith("y"));
+            while (playAgain);
         }
 
         public static void TimesUp(object sender, ElapsedEventArgs e)
