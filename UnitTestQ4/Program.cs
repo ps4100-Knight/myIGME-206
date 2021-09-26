@@ -17,12 +17,12 @@ namespace UnitTestQ4
         //Purpose:- A method that recreates the given 3questions.exe file
         public static void Main(string[] args)
         {
-            bool playAgain = false;
-            string[] sQuestions = new string[3];
+            bool playAgain = false;//to check if player wants to play again or not
+            string[] sQuestions = new string[3]; //questions in an array of strings
             sQuestions[0] = "What is your favorite color?";
             sQuestions[1] = "What is the answer to life, the universe and everything?";
             sQuestions[2] = "What is the airspeed velocity of an unladen swallow?";
-            sAnswer = new string[3];
+            sAnswer = new string[3];//answers in an arry of strings
             sAnswer[0] = "black";
             sAnswer[1] = "42";
             sAnswer[2] = "What do you mean? African or European swallow?";
@@ -32,7 +32,7 @@ namespace UnitTestQ4
             do
             {
                 Console.WriteLine();
-                do
+                do// asking user for which question they want
                 {
 
                     Console.Write("Choose your question (1-3): ");
@@ -64,7 +64,7 @@ namespace UnitTestQ4
                     }
                 }
                
-                while (true)
+                while (true)//asking player if he/she wants to play again
                 { 
                     Console.Write("Play again? ");
                     string sRePlay = Console.ReadLine();
