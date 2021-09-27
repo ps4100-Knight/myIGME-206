@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace UT_12
+namespace UnitTestQ12
 {
 
     // Author :- Pruthviraj Solanki (Knight)
