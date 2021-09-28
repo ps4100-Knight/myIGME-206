@@ -47,7 +47,7 @@ namespace UT1_BugSquash
 
 
         //int Power(int nBase, int nExponent) syntax error, Power nees to be static to be able to referenced without an object of the class
-        static int Power(int nBase, int nExponent)
+        static int Power(int nBase, int nExponent) 
         {
             int returnVal = 0;
             int nextVal = 0;
