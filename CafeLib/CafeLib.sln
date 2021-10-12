@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pe16", "pe16.csproj", "{998E7228-78E9-4999-B4A5-76EB48D6597A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeLib", "CafeLib.csproj", "{37F07EB4-40E0-41AD-8F15-E1C93D68BDE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{998E7228-78E9-4999-B4A5-76EB48D6597A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{998E7228-78E9-4999-B4A5-76EB48D6597A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{998E7228-78E9-4999-B4A5-76EB48D6597A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{998E7228-78E9-4999-B4A5-76EB48D6597A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F07EB4-40E0-41AD-8F15-E1C93D68BDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F07EB4-40E0-41AD-8F15-E1C93D68BDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F07EB4-40E0-41AD-8F15-E1C93D68BDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F07EB4-40E0-41AD-8F15-E1C93D68BDE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F05408C1-9E42-4CA3-A814-B257780DEB4E}
+		SolutionGuid = {858F8AF0-519F-4F74-86F2-BDDA1FCF3053}
 	EndGlobalSection
 EndGlobal

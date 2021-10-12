@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pe16
+namespace CafeLib
 {
     // Author : Pruthviraj (Knight)
     // Purpose : Changing UML diagram to class lib
@@ -69,8 +69,8 @@ namespace pe16
         }
     }
 
-    
-   
+
+
     public class CupOfCoffee : HotDrink, ITakeOrder
     {
         public string beanType;
