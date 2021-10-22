@@ -104,6 +104,94 @@ namespace UT2Q4
         {
 
         }
+        public static bool operator ==(Tardis t1, Tardis t2)
+        {
+            bool status = false;
+            if (t1.whichDrWho == t2.whichDrWho)
+            {
+
+                status = true;
+            }
+            return status;
+        }
+        public static bool operator !=(Tardis t1, Tardis t2)
+        {
+            bool status = false;
+            if (t1.whichDrWho != t2.whichDrWho)
+            {
+
+                status = true;
+            }
+            return status;
+        }
+        public static bool operator <(Tardis t1, Tardis t2)
+        {
+            bool status = false;
+            if (t1.whichDrWho == 10)
+            {
+                status = false;
+            }
+            else if (t2.whichDrWho == 10)
+            {
+                status = true;
+            }
+            else if (t1.whichDrWho < t2.whichDrWho)
+            {
+                status = true;
+            }
+            return status;
+        }
+        public static bool operator >(Tardis t1, Tardis t2)
+        {
+            bool status = false;
+            if(t1.whichDrWho == 10)
+            {
+                status = true;
+            }
+            else if (t2.whichDrWho == 10)
+            {
+                status = false;
+            }
+            else if (t1.whichDrWho > t2.whichDrWho)
+            {
+                status = true;
+            }
+            return status;
+        }
+        public static bool operator <=(Tardis t1, Tardis t2)
+        {
+            bool status = false;
+            if (t1.whichDrWho == 10)
+            {
+                status = false;
+            }
+            else if (t2.whichDrWho == 10)
+            {
+                status = true;
+            }
+            else if (t1.whichDrWho <= t2.whichDrWho)
+            {
+                status = true;
+            }
+            return status;
+        }
+        public static bool operator >=(Tardis t1, Tardis t2)
+        {
+            bool status = false;
+            if (t1.whichDrWho == 10)
+            {
+                status = true;
+            }
+            else if (t2.whichDrWho == 10)
+            {
+                status = false;
+            }
+            else if (t1.whichDrWho >= t2.whichDrWho)
+            {
+                status = true;
+            }
+            return status;
+        }
     }
 
     public class PhoneBooth : PushButtonPhone
