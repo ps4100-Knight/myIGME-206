@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace UT2Q4
 {
     
@@ -23,6 +24,7 @@ namespace UT2Q4
     {
         void Answer();
         void MakeCall();
+      
         void HangUp();
     }
 
@@ -35,7 +37,7 @@ namespace UT2Q4
 
         public void MakeCall()
         {
-
+        //   Console.WriteLine("Nihao");          
         }
 
         public void HangUp()
@@ -63,7 +65,7 @@ namespace UT2Q4
 
         public void MakeCall()
         {
-
+        //    Console.WriteLine("nijao");
         }
 
         public void HangUp()
@@ -82,13 +84,15 @@ namespace UT2Q4
         }
     }
 
-    public class Tardis : RotaryPhone
+    public class Tardis : RotaryPhone 
     {
         private bool sonicScrewdriver;
         private byte whichDrWho;
         private string femaleSideKick;
         public double exteriorSurfaceArea;
         public double interiorVolume;
+       // Tardis t1;
+        
 
         public byte WhichDrWho
         {
@@ -102,7 +106,7 @@ namespace UT2Q4
 
         public void TimeTravel()
         {
-
+            Console.WriteLine("time trabel");
         }
         public static bool operator ==(Tardis t1, Tardis t2)
         {
@@ -192,6 +196,15 @@ namespace UT2Q4
             }
             return status;
         }
+        public override int GetHashCode()
+        {  
+            return 0;  
+        }
+        public override bool Equals(object o)
+        {  
+            return true;  
+        }
+        
     }
 
     public class PhoneBooth : PushButtonPhone
@@ -202,7 +215,7 @@ namespace UT2Q4
 
         public void OpenDoor()
         {
-
+            Console.WriteLine("Open door");
         }
 
         public void CloseDoor()
@@ -210,4 +223,32 @@ namespace UT2Q4
 
         }
     }
+    public class runtime
+
+    {
+       
+        public static void Main(string[] args)
+        {
+            PhoneInterface t1 = new Tardis();
+            PhoneInterface p1 = new PhoneBooth();
+
+            UsePhone(t1);
+            UsePhone(p1);
+            
+        }
+        static void UsePhone(object obj)
+        {
+            ((PhoneInterface)obj).MakeCall();
+            ((PhoneInterface)obj).HangUp();
+            try
+            {
+                ((Tardis)obj).TimeTravel();
+            }
+            catch
+            {
+                ((PhoneBooth)obj).OpenDoor();
+            }
+        }
+    }
+        
 }
