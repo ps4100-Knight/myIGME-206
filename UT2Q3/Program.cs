@@ -25,7 +25,15 @@ namespace UT2Q3
                     for (x = 0; x<=4; Math.Round(x += 0.1,1))
                     {
                         sortedlist[(w,x,y)] = Math.Round(( (4* Math.Pow(y,3)) + (2* Math.Pow(x,2)) - (8*w) + 7 ),3);
-              //          Console.WriteLine(sortedlist[(w, x, y)]);
+                        //          Console.WriteLine(sortedlist[(w, x, y)]);
+                        DateTime thisDate1 = new DateTime(2011, 6, 10);
+                        SortedList<string, DateTime> friendBirthdays = new SortedList<string, DateTime>();
+                        foreach (KeyValuePair<string, DateTime> kv in friendBirthdays)
+                        {
+                            Console.WriteLine("{0},{1}", kv.Key, kv.Value.ToString("MM/dd/yyyy"));
+                            
+                        }
+                   
 
                     }
                 }
