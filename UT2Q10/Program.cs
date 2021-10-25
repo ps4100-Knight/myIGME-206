@@ -81,3 +81,19 @@ namespace UT2Q10
         }
     }
 }
+public class Zoo
+{
+    private string name;
+    private string value;
+
+    public string Name
+    {
+        get => this.name = value;
+
+        set
+        {
+            value = name;
+        }
+    }
+}
+

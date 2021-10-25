@@ -1,0 +1,17 @@
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+[+A:Reading|+BookName:string;+Author:string;+type:string|+reading():v]
+[+PaperBack|+HardCover:bool|+Read();+Purchase()]
+[+Ebook|+Website:string|+Read();+Purchase()]
+
+[+IPaperBack || Read()]
+[+IEbook || Purchase()]
+
+[+A:Reading]<-.-[+PaperBack]
+[+A:Reading]<-.-[+Ebook]
+
+[+IEbook]^[+PaperBack]
+[+IPaperBack]^[+PaperBack]
+[+IEbook]^[+Ebook]
