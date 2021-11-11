@@ -10,7 +10,7 @@ using System.IO;
 
 namespace PE22
 {
-
+ 
     class Trivia
     {
         public int response_code;
@@ -44,7 +44,7 @@ namespace PE22
           /*G*/  {(null, -1),(null, -1),(null, -1),(null, -1),("N", 0),(null, -1),(null, -1),("S", 2)},
           /*H*/  {(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1)}
         };
-        static (string, string)[,] mGraph = new (string, string)[,]
+        static (string,string)[,] mGraph = new (string,string)[,]
         {
             //Since there are paths with 0 weight -1 represents no connection.
                  /*N , S , E , W*/
@@ -110,7 +110,7 @@ namespace PE22
         {
             Program p = new Program();
             int nRoom = 0;
-
+            
             while (nRoom != 7)
             {
                 Console.WriteLine("Room no:-" + nRoom);
@@ -134,11 +134,11 @@ namespace PE22
                 // display the hp
                 Console.WriteLine($"You have {p.playerHp} HP");
                 // ask the player if they want wager (w) for more hp or leave (l) the room only if there are nExits > 0
-                if (nExits > 0)
+                if(nExits > 0)
                 {
                     Console.WriteLine("You can either wager your Hp against a trivia question(w) or leave the room using the HP value the path costs(l)\n What will it be?");
                 }
-
+                
                 string sResponse = null;
 
                 sResponse = Console.ReadLine();
@@ -149,22 +149,22 @@ namespace PE22
                     while (!bValid)
                     {
                         sDirection = Console.ReadLine();
-                        /*  for (nCntr = 0; nCntr < 8; ++nCntr)
-                          {
-                              Console.WriteLine(matrixGraph[nRoom, nCntr].Item1);
-                              if (matrixGraph[nRoom, nCntr].Item1.Contains(sDirection) && p.playerHp > matrixGraph[nRoom, nCntr].Item2)
-                              {
-                                  nRoom = nCntr;
-                                  Console.WriteLine("Room no(nRoom)" + nRoom);
-                                  Console.WriteLine("Control no(nRoom)" + nCntr);
-                                  p.playerHp -= matrixGraph[nRoom, nCntr].Item2;
-                                  bValid = true;
-                                  break;
-                              }
-                          }*/
-                        for (nCntr = 0; nCntr < 4; nCntr++)
+                      /*  for (nCntr = 0; nCntr < 8; ++nCntr)
                         {
-                            if (mGraph[nRoom, nCntr].Item1 == sDirection.ToUpper() && mGraph[nRoom, nCntr].Item2 != "N")
+                            Console.WriteLine(matrixGraph[nRoom, nCntr].Item1);
+                            if (matrixGraph[nRoom, nCntr].Item1.Contains(sDirection) && p.playerHp > matrixGraph[nRoom, nCntr].Item2)
+                            {
+                                nRoom = nCntr;
+                                Console.WriteLine("Room no(nRoom)" + nRoom);
+                                Console.WriteLine("Control no(nRoom)" + nCntr);
+                                p.playerHp -= matrixGraph[nRoom, nCntr].Item2;
+                                bValid = true;
+                                break;
+                            }
+                        }*/
+                      for (nCntr = 0; nCntr<4; nCntr++)
+                        {
+                            if(mGraph[nRoom,nCntr].Item1 == sDirection.ToUpper() && mGraph[nRoom,nCntr].Item2 != "N")
                             {
                                 if (mGraph[nRoom, nCntr].Item2 == "A")
                                 {
@@ -209,9 +209,9 @@ namespace PE22
                         {
                             Console.WriteLine("That isn't a valid direction");
                         }
-
+                        
                     }
-
+                    
                 }
                 else
                 {
@@ -248,11 +248,11 @@ namespace PE22
 
         public static void roomDescription(int currentRoom)
         {
-            if (currentRoom == 0)
+            if(currentRoom == 0)
             {
                 Console.WriteLine("A strange dark room in which you have just woken up\n A wispering sound that is trying to talk to you as a cold breez hits you in the face\n");
             }
-            else if (currentRoom == 1)
+            else if(currentRoom == 1)
             {
                 Console.WriteLine("A room with a table in the corner with a lot of stationary clutter which is covered in spider webs and a bookself with lots of old books\n seems like it used to be someone's study\n");
             }
@@ -332,32 +332,6 @@ namespace PE22
                 Console.WriteLine("Diety is furious because of\n.......\numm\n.....\n The reason, yes the reason\n you loose some health for making it angry\n");
             }
         }
-        public static Trivia AskTrivia()
-        {
-            string url = null;
-            string s = null;
 
-            HttpWebRequest request;
-            HttpWebResponse response;
-            StreamReader reader;
-
-            url = "https://opentdb.com/api.php?amount=1";
-
-            request = (HttpWebRequest)WebRequest.Create(url);
-            response = (HttpWebResponse)request.GetResponse();
-            reader = new StreamReader(response.GetResponseStream());
-            s = reader.ReadToEnd();
-            reader.Close();
-
-            Trivia trivia = JsonConvert.DeserializeObject<Trivia>(s);
-
-            trivia.results[0].question = HttpUtility.HtmlDecode(trivia.results[0].question);
-            trivia.results[0].correct_answer = HttpUtility.HtmlDecode(trivia.results[0].correct_answer);
-            for (int i = 0; i < trivia.results[0].incorrect_answers.Count; ++i)
-            {
-                trivia.results[0].incorrect_answers[i] = HttpUtility.HtmlDecode(trivia.results[0].incorrect_answers[i]);
-            }
-
-        }
     }
 }
