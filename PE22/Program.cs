@@ -10,7 +10,7 @@ using System.IO;
 
 namespace PE22
 {
- 
+
     class Trivia
     {
         public int response_code;
@@ -35,16 +35,16 @@ namespace PE22
         static (string, int)[,] matrixGraph = new (string, int)[,]
         {
                  //    A           B           C           D           E           F           G           H
-          /*A*/  {("NE", 0),  ("S", 2),   (null, -1), (null, -1), (null, -1), (null, -1), (null, -1), (null, -1)},
-          /*B*/  {(null, -1), (null, -1), ("S", 2),   ("E", 3),   (null, -1), (null, -1), (null, -1), (null, -1)},
-          /*C*/  {(null, -1), ("N", 2),   (null, -1), (null, -1), (null, -1), (null, -1), (null, -1), ("S", 20)},
-          /*D*/  {(null, -1), ("W", 3),   ("S", 5),   (null, -1), ("N", 2),   ("E", 4),   (null, -1), (null, -1)},
-          /*E*/  {(null, -1), (null, -1), (null, -1), (null, -1), (null, -1), ("S", 3),   (null, -1), (null, -1)},
-          /*F*/  {(null, -1), (null, -1), (null, -1), (null, -1), (null, -1), (null, -1), ("E", 1),   (null, -1)},
-          /*G*/  {(null, -1), (null, -1), (null, -1), (null, -1), ("N", 0),   (null, -1), (null, -1), ("S", 2)},
-          /*H*/  {(null, -1), (null, -1), (null, -1), (null, -1), (null, -1), (null, -1), (null, -1), (null, -1)}
+          /*A*/  {("NE", 0),("S", 2),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1)},
+          /*B*/  {(null, -1),(null, -1),("S", 2),("E", 3),(null, -1),(null, -1),(null, -1),(null, -1)},
+          /*C*/  {(null, -1),("N", 2),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),("S", 20)},
+          /*D*/  {(null, -1),("W", 3),("S", 5),(null, -1),("N", 2),("E", 4),(null, -1),(null, -1)},
+          /*E*/  {(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),("S", 3),(null, -1),(null, -1)},
+          /*F*/  {(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),("E", 1),(null, -1)},
+          /*G*/  {(null, -1),(null, -1),(null, -1),(null, -1),("N", 0),(null, -1),(null, -1),("S", 2)},
+          /*H*/  {(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1),(null, -1)}
         };
-        static (string,string)[,] mGraph = new (string,string)[,]
+        static (string, string)[,] mGraph = new (string, string)[,]
         {
             //Since there are paths with 0 weight -1 represents no connection.
                  /*N , S , E , W*/
@@ -66,7 +66,7 @@ namespace PE22
             /*D*/new (int, string, int)[] {(1, "W", 3), (2, "S", 5), (4, "N", 2), (5, "E", 4)},
             /*E*/new (int, string, int)[] {(5, "S", 3)},
             /*F*/new (int, string, int)[] {(6, "E", 1)},
-            /*G*/new (int, string, int)[] {(4, "N", 0)},
+            /*G*/new (int, string, int)[] {(4, "N", 0),(7,"S",2)},
             null
         };
         // parallel arrays to store the weight, direction and room indexes
@@ -79,7 +79,7 @@ namespace PE22
                   new int[] {3,5,2,4},
                   new int[] {3},
                   new int[] {1},
-                  new int[] {0},
+                  new int[] {0,2},
                   null
             /*B new (int, string, int)[] {(2, "S", 2), (3, "E", 3)},
             new (int, string, int)[] {(1, "N", 2), (7, "S", 20)},
@@ -97,7 +97,7 @@ namespace PE22
                   new int[] {1,2,4,5},
                   new int[] {5},
                   new int[] {6},
-                  new int[] {4}
+                  new int[] {4,7}
             /*B new (int, string, int)[] {(2, "S", 2), (3, "E", 3)},
             new (int, string, int)[] {(1, "N", 2), (7, "S", 20)},
             new (int, string, int)[] {(1, "W", 3), (2, "S", 5), (4, "N", 2), (5, "E", 4)},
@@ -110,9 +110,10 @@ namespace PE22
         {
             Program p = new Program();
             int nRoom = 0;
-            
+
             while (nRoom != 7)
             {
+                Console.WriteLine("Room no:-" + nRoom);
                 int nCntr = 0;
                 // if not room A and not room H then randomly reduce their HP such that they don't die
                 p.drophealth();
@@ -133,11 +134,11 @@ namespace PE22
                 // display the hp
                 Console.WriteLine($"You have {p.playerHp} HP");
                 // ask the player if they want wager (w) for more hp or leave (l) the room only if there are nExits > 0
-                if(nExits > 0)
+                if (nExits > 0)
                 {
                     Console.WriteLine("You can either wager your Hp against a trivia question(w) or leave the room using the HP value the path costs(l)\n What will it be?");
                 }
-                
+
                 string sResponse = null;
 
                 sResponse = Console.ReadLine();
@@ -148,22 +149,22 @@ namespace PE22
                     while (!bValid)
                     {
                         sDirection = Console.ReadLine();
-                      /*  for (nCntr = 0; nCntr < 8; ++nCntr)
+                        /*  for (nCntr = 0; nCntr < 8; ++nCntr)
+                          {
+                              Console.WriteLine(matrixGraph[nRoom, nCntr].Item1);
+                              if (matrixGraph[nRoom, nCntr].Item1.Contains(sDirection) && p.playerHp > matrixGraph[nRoom, nCntr].Item2)
+                              {
+                                  nRoom = nCntr;
+                                  Console.WriteLine("Room no(nRoom)" + nRoom);
+                                  Console.WriteLine("Control no(nRoom)" + nCntr);
+                                  p.playerHp -= matrixGraph[nRoom, nCntr].Item2;
+                                  bValid = true;
+                                  break;
+                              }
+                          }*/
+                        for (nCntr = 0; nCntr < 4; nCntr++)
                         {
-                            Console.WriteLine(matrixGraph[nRoom, nCntr].Item1);
-                            if (matrixGraph[nRoom, nCntr].Item1.Contains(sDirection) && p.playerHp > matrixGraph[nRoom, nCntr].Item2)
-                            {
-                                nRoom = nCntr;
-                                Console.WriteLine("Room no(nRoom)" + nRoom);
-                                Console.WriteLine("Control no(nRoom)" + nCntr);
-                                p.playerHp -= matrixGraph[nRoom, nCntr].Item2;
-                                bValid = true;
-                                break;
-                            }
-                        }*/
-                      for (nCntr = 0; nCntr<4; nCntr++)
-                        {
-                            if(mGraph[nRoom,nCntr].Item1 == sDirection.ToUpper() && mGraph[nRoom,nCntr].Item2 != "N")
+                            if (mGraph[nRoom, nCntr].Item1 == sDirection.ToUpper() && mGraph[nRoom, nCntr].Item2 != "N")
                             {
                                 if (mGraph[nRoom, nCntr].Item2 == "A")
                                 {
@@ -208,13 +209,14 @@ namespace PE22
                         {
                             Console.WriteLine("That isn't a valid direction");
                         }
-                        
+
                     }
-                    Console.WriteLine(nRoom);
+
                 }
                 else
                 {
                     // trivia question
+
                     // fetch api
                     // 15 second limit to answer
                     // multiple choice 1-4
@@ -246,11 +248,11 @@ namespace PE22
 
         public static void roomDescription(int currentRoom)
         {
-            if(currentRoom == 0)
+            if (currentRoom == 0)
             {
                 Console.WriteLine("A strange dark room in which you have just woken up\n A wispering sound that is trying to talk to you as a cold breez hits you in the face\n");
             }
-            else if(currentRoom == 1)
+            else if (currentRoom == 1)
             {
                 Console.WriteLine("A room with a table in the corner with a lot of stationary clutter which is covered in spider webs and a bookself with lots of old books\n seems like it used to be someone's study\n");
             }
@@ -329,6 +331,33 @@ namespace PE22
             {
                 Console.WriteLine("Diety is furious because of\n.......\numm\n.....\n The reason, yes the reason\n you loose some health for making it angry\n");
             }
+        }
+        public static Trivia AskTrivia()
+        {
+            string url = null;
+            string s = null;
+
+            HttpWebRequest request;
+            HttpWebResponse response;
+            StreamReader reader;
+
+            url = "https://opentdb.com/api.php?amount=1";
+
+            request = (HttpWebRequest)WebRequest.Create(url);
+            response = (HttpWebResponse)request.GetResponse();
+            reader = new StreamReader(response.GetResponseStream());
+            s = reader.ReadToEnd();
+            reader.Close();
+
+            Trivia trivia = JsonConvert.DeserializeObject<Trivia>(s);
+
+            trivia.results[0].question = HttpUtility.HtmlDecode(trivia.results[0].question);
+            trivia.results[0].correct_answer = HttpUtility.HtmlDecode(trivia.results[0].correct_answer);
+            for (int i = 0; i < trivia.results[0].incorrect_answers.Count; ++i)
+            {
+                trivia.results[0].incorrect_answers[i] = HttpUtility.HtmlDecode(trivia.results[0].incorrect_answers[i]);
+            }
+
         }
     }
 }
