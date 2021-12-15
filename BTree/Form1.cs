@@ -332,7 +332,7 @@ namespace BTree
 
             this.richTextBox1.Text += "\n";
 
-            BTree.TraverseAscending(root); a
+            BTree.TraverseAscending(root); 
 
             List<int> nodelist = new List<int>(nodes);
 
