@@ -10,7 +10,7 @@ using System.IO;
 using System.Timers;
 using System.Diagnostics;
 using System.Threading;
-namespace FEQ2
+namespace FinalQ23
 {
     class Trivia
     {
